@@ -38,9 +38,9 @@ public class RecipeController {
     }
 
     @GetMapping(produces = "application/json", value = "{id}/show")
-    public ResponseEntity<RecipeShowResource> showRecipeImage(@NotBlank @PathVariable Integer id){
+    public ResponseEntity<String> showRecipeImage(@NotBlank @PathVariable Integer id){
 
-        return ResponseEntity.ok(recipeService.showRecipeImage(id));
+        return ResponseEntity.ok(recipeService.showRecipeImage(id).getImage());
     }
 
     @GetMapping(produces = "application/json")
