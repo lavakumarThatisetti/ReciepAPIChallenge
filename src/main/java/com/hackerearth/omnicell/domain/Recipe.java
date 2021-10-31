@@ -25,7 +25,6 @@ public class Recipe {
 
     @Id
     @Column(name= "id", updatable = false)
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer Id;
 
     @Column(name="name")

@@ -3,6 +3,7 @@ package com.hackerearth.omnicell.rest.controller;
 
 import com.hackerearth.omnicell.domain.Recipe;
 import com.hackerearth.omnicell.domain.RecipeShowResource;
+import com.hackerearth.omnicell.rest.resource.MessageResponse;
 import com.hackerearth.omnicell.service.RecipeService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -26,9 +27,15 @@ public class RecipeController {
 
 
     @PostMapping(produces = "application/json")
-    public ResponseEntity<Recipe> saveRecipe(@Valid @RequestBody Recipe recipe) {
+    public ResponseEntity<?> saveRecipe(@Valid @RequestBody Recipe recipe) {
+        try {
+            return ResponseEntity.ok(recipeService.saveRecipe(recipe));
+        }catch (Exception e){
 
-        return ResponseEntity.ok(recipeService.saveRecipe(recipe));
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Recipe Name Already Present"));
+        }
     }
 
     @GetMapping(produces = "application/json", value = "{id}")
