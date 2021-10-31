@@ -1,0 +1,23 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: omnicell-reciepe-api
+    description: hackerearth challenge
+    version: 0.0.1
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: masterpassword287
+    driverClassName: org.postgresql.Driver
+    initialization-mode: always
+  jpa:
+    generte-ddl: false
+    hibernate:
+      ddl-auto: none
+    show_sql: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  api:
+    recipeApi: https://s3-ap-southeast-1.amazonaws.com/he-public-data/reciped9d7b8c.json
+
